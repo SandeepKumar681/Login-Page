@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+    <style>
+        *
+        {
+            margin: 0px;
+            padding: 0px;
+        }
+        #bg
+        {
+            width: 100%;
+            height: 480px;
+            background-image: linear-gradient(95deg,cyan,yellow);
+            background-size: 100% 480px;
+            background-repeat: no-repeat;
+        }
+        #main
+        {
+            border: 2px solid white;
+            position: absolute;
+            top: 28%;
+            left: 34%;
+            justify-content: center;
+            align-self: center;
+            padding: 30px;
+            border-radius: 10px;
+            background-color:black;
+            width: 280px;
+            height: 220px;
+            box-shadow: 1px 1px 5px black; 
+        }
+        fieldset
+        {
+            width: 210px;
+            height: 30px;
+            margin-bottom:10px ;
+            border-radius: 100px;
+            border: 3px solid blue;
+        }
+        #btn
+        {
+            position: relative;
+            top: 45px;
+            left: 93px;
+            font-size: 20px;
+            border-radius: 100px;
+            border: 3px solid greenyellow;
+            width: 100px;
+            color: white;
+            background-color: transparent;
+        }
+        #btn:hover
+        {
+            background-color: aquamarine;
+            border-color:white ;
+            color: purple;
+            font-family: monospace;
+        }
+        #Password,#User
+        {
+            border: 0px;
+            outline: 0px;
+            width: 77%;
+            height: 30px;
+            padding-left: 5px;
+            color: white;
+            background: transparent;
+            font-size: 20px;
+            text-align: center;
+        }
+        #result
+        {
+            position: absolute;
+            top: 62%;
+            left: 31%;
+            color: blue;
+            text-shadow: 1px 1px 5px green;
+            font-size: 25px;
+            text-align: center;
+        }
+        #img
+        {
+            width: 25px;
+            background-color: white;
+            border-radius: 100%;
+        }
+        #head
+        {
+            color: white;
+            text-align: center;
+        }
+        #fsUser
+        {
+            position: relative;
+            left: 36px;
+            top: 20px;
+
+        }
+        #fsPassword
+        {
+            position: relative;
+            left: 36px;
+            top: 27px;
+        }
+        #backdiv
+        {
+            width: 60%;
+            height: 370px;
+            background-image: linear-gradient(95deg, deeppink,purple);
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            box-shadow: 2px 2px 5px black;
+        }
+        #result{
+            color: green;
+        }
+    </style>
+</head>
+<body id="bg">
+    <div id="backdiv"></div>
+   <form id="frm">
+    <div id="main">
+        <h1 id="head">Login</h1>
+        <fieldset id="fsUser">
+            <input type="text" id="User" placeholder="User ID">
+        </fieldset>
+        <fieldset id="fsPassword">
+            <input type="password"  id="Password" placeholder="Password">
+            <img src="Closed Eye.png" id="img" onmousedown="vis()" onmouseup="hid()">
+        </fieldset>
+        <input type="button" value="Login" id="btn" onclick="fun()"> 
+        <h4 id="result"></h4>
+    </div> 
+   </form>
+   <script>
+    function vis()
+    {
+        document.getElementById("Password").removeAttribute("type")
+        document.getElementById("img").setAttribute("src","./Opened Eye.png")
+    }
+    function hid()
+    {
+        document.getElementById("Password").setAttribute("type","password")
+        document.getElementById("img").setAttribute("src","./Closed Eye.png")
+    }
+    function fun()
+    {
+        var a="sandeep"
+        var b="cool"
+        var user=document.getElementById("User").value
+        var pass=document.getElementById("Password").value
+        if(a==user && b==pass)
+        {
+            document.getElementById("btn").setAttribute("type","submit")
+            document.getElementById("result").innerHTML="Login Succesfull...!"
+        }
+        else if(a!=user && b==pass)
+        {
+            document.getElementById("fsUser").style.border="4px red solid"
+            document.getElementById("fsPassword").style.border="4px blue solid"
+            document.getElementById("bg").style.backgroundImage="linear-gradient(95deg,red,yellow)"
+        }
+        else if(a==user && b!=pass)
+        {
+            document.getElementById("fsPassword").style.border="4px red solid"
+            document.getElementById("fsUser").style.border="4px blue solid"
+            document.getElementById("bg").style.backgroundImage="linear-gradient(95deg,cyan,red)"
+
+        }
+        else
+        {
+            document.getElementById("fsUser").style.border="4px red solid"
+            document.getElementById("fsPassword").style.border="4px red solid"
+            document.getElementById("bg").style.backgroundImage="linear-gradient(95deg,red,red)"
+        }
+    }
+   </script>
+</body>
+</html>
